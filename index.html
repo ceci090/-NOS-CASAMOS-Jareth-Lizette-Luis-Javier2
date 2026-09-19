@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jareth & Luis Javier — Boda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --azul: #5D7A97;
+    --azul-oscuro: #3B5068;
+    --azul-claro: #8FA8BE;
+    --perla: #C7CDD3;
+    --perla-oscuro: #9AA3AC;
+    --perla-claro: #E9ECEE;
+    --blanco: #FFFFFF;
+    --carbon: #2E2E2E;
+    --linea: rgba(46,46,46,0.12);
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0; color:var(--carbon);
+    font-family:'Poppins', sans-serif; font-size:16px; line-height:1.6;
+    background-color:var(--blanco);
+    background-image:url('assets/imagen_1.jpg');
+    background-size:368px 654px; background-repeat:repeat;
+  }
+  h1,h2,h3{ font-family:'Cormorant Garamond', serif; font-weight:500; margin:0; }
+  .wrap{ max-width:480px; margin:0 auto; overflow:hidden; background:var(--blanco); }
+  section{ padding:70px 30px; text-align:center; }
+  .eyebrow{ letter-spacing:0.3em; font-size:11px; text-transform:uppercase; color:var(--azul); font-weight:600; margin-bottom:14px; }
+  h2{ font-size:28px; color:var(--azul-oscuro); margin-bottom:10px; }
+  p{ color:#555; }
+  .divider{ width:40px; height:2px; background:var(--perla-oscuro); margin:22px auto; }
+
+  /* HERO */
+  #hero{
+    background:
+      radial-gradient(ellipse 340px 260px at 88% 6%, rgba(93,122,151,0.16), transparent 60%),
+      radial-gradient(ellipse 260px 220px at 6% 30%, rgba(199,205,211,0.5), transparent 65%),
+      radial-gradient(ellipse 300px 240px at 92% 70%, rgba(143,168,190,0.14), transparent 60%),
+      var(--perla-claro);
+    color:var(--azul-oscuro); padding:100px 30px 90px; position:relative; overflow:hidden;
+  }
+  #hero .eyebrow{ color:var(--azul); }
+  #hero .nombres{ font-size:48px; line-height:1.25; margin:18px 0; color:var(--azul-oscuro); }
+  #hero .amp{ display:block; font-size:22px; color:var(--azul); font-style:italic; margin:6px 0; }
+  #hero .frase{ font-style:italic; color:#5b6b78; font-size:16px; max-width:300px; margin:20px auto 0; position:relative; z-index:2; }
+  #hero .fecha{ margin-top:30px; display:inline-flex; gap:10px; align-items:center; letter-spacing:0.25em; font-size:13px; color:var(--azul-oscuro); position:relative; z-index:2; }
+  #hero .fecha::before,#hero .fecha::after{ content:""; width:24px; height:1px; background:var(--azul); }
+  #hero .eyebrow, #hero h1{ position:relative; z-index:2; }
+
+  .foto-placeholder{
+    width:100%; aspect-ratio:4/5; border-radius:4px; overflow:hidden;
+    background: linear-gradient(160deg, var(--azul-claro), var(--perla));
+    display:flex; align-items:center; justify-content:center; color:var(--blanco);
+    font-size:13px; letter-spacing:0.1em; text-align:center; padding:20px;
+  }
+  .foto-portada{ padding:40px 34px; }
+  .foto-portada .foto-placeholder{ aspect-ratio:16/11; }
+
+  /* COUNTDOWN */
+  #countdown{ background:var(--perla-claro); }
+  .contador{ display:flex; justify-content:center; gap:14px; margin-top:26px; }
+  .c-item{ background:var(--blanco); border:1px solid var(--linea); border-radius:10px; padding:16px 10px; min-width:64px; }
+  .c-num{ font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--azul-oscuro); }
+  .c-label{ font-size:10px; letter-spacing:0.1em; color:var(--perla-oscuro); margin-top:6px; }
+  .btn-outline{
+    margin-top:28px; display:inline-block; border:1px solid var(--azul); color:var(--azul);
+    padding:12px 26px; border-radius:999px; font-size:13px; letter-spacing:0.08em; text-decoration:none;
+    background:transparent; cursor:pointer;
+  }
+  .btn-outline:hover{ background:var(--azul); color:var(--blanco); }
+
+  /* ICONOS */
+  .icono-circulo{
+    width:46px; height:46px; border-radius:50%; margin:0 auto 14px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(93,122,151,0.1); color:var(--azul-oscuro);
+  }
+  .icono-circulo svg{ width:22px; height:22px; }
+  .icono-circulo.claro{ background:rgba(255,255,255,0.16); color:var(--blanco); }
+  .lugar-cabeza{ display:flex; align-items:center; gap:10px; margin-bottom:2px; }
+  .lugar-icono{ width:30px; height:30px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; background:rgba(93,122,151,0.12); color:var(--azul-oscuro); }
+  .lugar-icono svg{ width:15px; height:15px; }
+  .item-icono{ width:28px; height:28px; border-radius:50%; border:1px solid var(--azul); flex-shrink:0; display:flex; align-items:center; justify-content:center; color:var(--azul); }
+  .item-icono svg{ width:13px; height:13px; }
+
+  /* INVITACION */
+  .padres{ display:flex; gap:0; margin-top:30px; text-align:left; }
+  .padres > div{ flex:1; padding:0 16px; }
+  .padres > div:first-child{ border-right:1px solid var(--linea); }
+  .padres h3{ font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--perla-oscuro); text-align:center; margin-bottom:10px; font-family:'Poppins',sans-serif; font-weight:500; }
+  .padres p{ text-align:center; margin:0; font-size:15px; color:var(--carbon); }
+
+  /* FOTO GRANDE / CARRUSEL */
+  #foto{ padding:60px 32px; }
+  .caption{ font-size:13px; letter-spacing:0.1em; color:var(--perla-oscuro); margin-top:16px; }
+  .carrusel{
+    position:relative; width:100%; aspect-ratio:4/5; border-radius:14px; overflow:hidden;
+    box-shadow:0 20px 40px -22px rgba(59,80,104,0.45);
+  }
+  .carrusel-track{ display:flex; width:100%; height:100%; transition:transform 0.45s ease; }
+  .carrusel-slide{ min-width:100%; height:100%; }
+  .carrusel-slide img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .carrusel-flecha{
+    position:absolute; top:50%; transform:translateY(-50%); width:34px; height:34px; border-radius:50%;
+    background:rgba(255,255,255,0.85); border:none; color:var(--azul-oscuro); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  }
+  .carrusel-flecha svg{ width:16px; height:16px; }
+  .carrusel-flecha.prev{ left:10px; }
+  .carrusel-flecha.next{ right:10px; }
+  .carrusel-puntos{ display:flex; justify-content:center; gap:8px; margin-top:14px; }
+  .carrusel-puntos button{
+    width:8px; height:8px; border-radius:50%; border:none; background:var(--perla-oscuro); padding:0; cursor:pointer;
+  }
+  .carrusel-puntos button.activo{ background:var(--azul-oscuro); width:20px; border-radius:4px; transition:width 0.25s; }
+
+  /* UBICACION */
+  #ubicacion{ background:var(--perla-claro); }
+  .lugar{
+    background:var(--blanco); border:1px solid var(--linea); border-radius:12px;
+    padding:22px 20px; margin-bottom:16px; text-align:left;
+  }
+  .lugar h3{ font-size:16px; color:var(--azul-oscuro); margin-bottom:4px; font-family:'Poppins',sans-serif; font-weight:600; }
+  .lugar p{ font-size:14px; margin:0 0 12px; }
+  .lugar a{ font-size:12px; letter-spacing:0.05em; color:var(--azul); text-decoration:none; border-bottom:1px solid var(--azul); }
+
+  .itinerario{ margin-top:30px; text-align:left; max-width:260px; margin-left:auto; margin-right:auto; }
+  .item{ display:flex; gap:14px; padding-bottom:24px; position:relative; }
+  .item::before{ content:""; position:absolute; left:9px; top:22px; bottom:0; width:1px; background:var(--linea); }
+  .item:last-child::before{ display:none; }
+  .punto{ width:20px; height:20px; border-radius:50%; background:var(--azul); flex-shrink:0; margin-top:1px; }
+  .item h4{ font-size:15px; font-family:'Poppins',sans-serif; font-weight:600; margin:0; color:var(--carbon); }
+  .item span{ font-size:13px; color:var(--perla-oscuro); }
+
+  /* NUESTRA CANCIÓN */
+  #cancion .player{
+    display:flex; align-items:center; gap:16px; text-align:left;
+    background:var(--perla-claro); border:1px solid var(--linea); border-radius:14px;
+    padding:16px 18px; margin-top:24px;
+  }
+  .btn-play{
+    width:44px; height:44px; border-radius:50%; border:none; background:var(--azul-oscuro); color:var(--blanco);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+  }
+  .btn-play svg{ width:15px; height:15px; }
+  .player-info{ flex:1; min-width:0; }
+  .player-titulo{ font-family:'Cormorant Garamond',serif; font-size:17px; color:var(--azul-oscuro); }
+  .player-artista{ font-size:12px; color:var(--perla-oscuro); margin-bottom:8px; }
+  .ondas{ display:flex; align-items:flex-end; gap:3px; height:14px; }
+  .ondas span{ width:3px; background:var(--azul); border-radius:2px; height:5px; }
+  .ondas.activo span{ animation:onda 0.9s ease-in-out infinite; }
+  .ondas span:nth-child(2){ animation-delay:0.15s; }
+  .ondas span:nth-child(3){ animation-delay:0.3s; }
+  .ondas span:nth-child(4){ animation-delay:0.1s; }
+  .ondas span:nth-child(5){ animation-delay:0.25s; }
+  @keyframes onda{ 0%,100%{ height:4px; } 50%{ height:14px; } }
+
+  /* VESTIMENTA */
+  .swatches{ display:flex; gap:16px; justify-content:center; margin:24px 0 16px; }
+  .swatch{ width:44px; height:44px; border-radius:50%; border:2px solid var(--blanco); box-shadow:0 0 0 1px var(--linea); }
+  .swatch.blanco{ background:#fff; }
+  .swatch.gris{ background:var(--perla); }
+  .swatch.azul{ background:var(--azul); box-shadow:0 0 0 2px var(--azul-oscuro); }
+  .nota{ font-size:13px; color:var(--perla-oscuro); max-width:280px; margin:0 auto; }
+
+  /* RSVP */
+  #rsvp{ background:var(--azul-oscuro); color:var(--blanco); }
+  #rsvp .eyebrow{ color:var(--perla); }
+  #rsvp h2{ color:var(--blanco); }
+  #rsvp p{ color:var(--perla-claro); max-width:280px; margin:0 auto 26px; }
+  .btn-solid{
+    display:inline-block; background:var(--blanco); color:var(--azul-oscuro);
+    padding:14px 32px; border-radius:999px; text-decoration:none; font-size:13px; letter-spacing:0.1em; font-weight:600;
+  }
+
+  /* CIERRE */
+  #cierre{ padding-bottom:60px; }
+  #cierre .frase-final{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:24px; color:var(--azul-oscuro); max-width:280px; margin:0 auto 14px; }
+  footer{ text-align:center; padding:24px; font-size:11px; letter-spacing:0.1em; color:var(--perla-oscuro); border-top:1px solid var(--linea); }
+
+  /* ---- Flores de línea fina ---- */
+  .flor-esquina{ position:absolute; pointer-events:none; z-index:1; }
+  .flor-esquina.tr{ top:0; right:0; width:230px; height:230px; }
+  .flor-esquina.bl{ bottom:0; left:0; width:150px; height:150px; transform:rotate(180deg); opacity:0.85; }
+  #hero{ position:relative; }
+  .flor-divisor{ display:flex; align-items:center; justify-content:center; gap:10px; margin:26px 0 0; }
+  .flor-divisor .linea{ width:34px; height:1px; background:var(--linea); }
+  .flor-divisor svg{ width:24px; height:24px; }
+  .flor-cierre-wrap{ position:relative; padding-top:6px; }
+  .flor-cierre{ position:absolute; top:-30px; right:-6px; width:150px; height:150px; opacity:0.9; }
+
+  /* ---- Mariposas ---- */
+  .mariposa{ position:absolute; pointer-events:none; z-index:2; }
+  #hero .mariposa.m1{ top:130px; left:24px; width:46px; height:46px; transform:rotate(-8deg); }
+  #hero .mariposa.m2{ top:210px; right:70px; width:30px; height:30px; transform:rotate(14deg); }
+  .foto-portada{ position:relative; }
+  .foto-portada .mariposa{ top:-14px; right:36px; width:38px; height:38px; transform:rotate(-10deg); }
+  #countdown{ position:relative; }
+  #countdown .mariposa{ top:14px; left:22px; width:32px; height:32px; transform:rotate(10deg); opacity:0.8; }
+  #cierre{ position:relative; }
+  #cierre .mariposa{ top:6px; left:30px; width:36px; height:36px; transform:rotate(-12deg); }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <!-- pétalo monolínea, con vena central -->
+    <g id="petalo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0,0 C-7,-6 -8,-16 -4,-24 C-2,-27.5 2,-27.5 4,-24 C8,-16 7,-6 0,0 Z"/>
+      <path d="M0,-4 L0,-21" opacity="0.4" stroke-width="0.7"/>
+    </g>
+    <!-- hoja monolínea con vena -->
+    <g id="hoja" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0,0 C6,-14 20,-21 32,-15 C29,-8 22,-2 14,1 C9,3 3,2 0,0 Z"/>
+      <path d="M2,-1 C10,-6 20,-11 28,-13"/>
+    </g>
+    <!-- flor completa: dos anillos de pétalos -->
+    <g id="flor-completa">
+      <g stroke="#3B5068" stroke-width="1.05">
+        <use href="#petalo" transform="rotate(-6) scale(1.05)"/>
+        <use href="#petalo" transform="rotate(48) scale(0.95)"/>
+        <use href="#petalo" transform="rotate(100) scale(1.1)"/>
+        <use href="#petalo" transform="rotate(150) scale(0.9)"/>
+        <use href="#petalo" transform="rotate(198) scale(1.05)"/>
+        <use href="#petalo" transform="rotate(250) scale(0.95)"/>
+        <use href="#petalo" transform="rotate(300) scale(1.1)"/>
+      </g>
+      <g stroke="#5D7A97" stroke-width="1">
+        <use href="#petalo" transform="rotate(18) scale(0.6)"/>
+        <use href="#petalo" transform="rotate(78) scale(0.55)"/>
+        <use href="#petalo" transform="rotate(140) scale(0.62)"/>
+        <use href="#petalo" transform="rotate(210) scale(0.58)"/>
+        <use href="#petalo" transform="rotate(275) scale(0.6)"/>
+        <use href="#petalo" transform="rotate(330) scale(0.56)"/>
+      </g>
+      <circle r="2.2" fill="none" stroke="#3B5068" stroke-width="0.9"/>
+    </g>
+    <!-- ramito de esquina: tallo + hojas + capullos + 2 flores -->
+    <g id="ramo-esquina">
+      <path d="M0,0 C-8,16 -24,36 -37,56 C-44,66 -40,77 -47,86" fill="none" stroke="#5D7A97" stroke-width="1.1" stroke-linecap="round"/>
+      <use href="#hoja" stroke="#5D7A97" transform="translate(-31,40) rotate(-20) scale(1.15)"/>
+      <use href="#hoja" stroke="#3B5068" transform="translate(-16,20) rotate(-55) scale(1)"/>
+      <use href="#hoja" stroke="#5D7A97" transform="translate(-39,58) rotate(160) scale(0.85)"/>
+      <use href="#petalo" stroke="#5D7A97" stroke-width="1" transform="translate(-42,69) rotate(165) scale(0.55)"/>
+      <use href="#petalo" stroke="#5D7A97" stroke-width="1" transform="translate(-47,86) rotate(190) scale(0.45)"/>
+      <use href="#flor-completa" stroke="#3B5068" transform="translate(-20,26) scale(0.8) rotate(-20)"/>
+      <use href="#flor-completa" transform="translate(2,4) scale(1.5) rotate(8)"/>
+    </g>
+
+    <!-- iconos de línea -->
+    <g id="icono-reloj" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 2h10M5 18h10M6 2c0 4 3 5.2 4 6-1 .8-4 2-4 6M14 2c0 4-3 5.2-4 6 1 .8 4 2 4 6"/>
+    </g>
+    <g id="icono-anillos" fill="none" stroke="currentColor" stroke-width="1.4">
+      <circle cx="7.2" cy="12" r="4.6"/><circle cx="12.8" cy="12" r="4.6"/>
+      <path d="M9 6.4 L10 3 L11 6.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="icono-pin" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 18s6-6.3 6-10.6A6 6 0 0 0 4 7.4C4 11.7 10 18 10 18Z"/>
+      <circle cx="10" cy="7.4" r="2.1"/>
+    </g>
+    <g id="icono-iglesia" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 2v3M8.4 3.6h3.2"/><path d="M10 5 3 10v8h14v-8Z"/>
+      <path d="M10 10v8M6.6 18v-4a1 1 0 0 1 1-1h1M12.4 13h1a1 1 0 0 1 1 1v4"/>
+    </g>
+    <g id="icono-copas" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4.6 3h4.8L9 8.4a2.4 2.4 0 0 1-4.8 0Z"/><path d="M6.6 8.6V15M4.6 17h4"/>
+      <path d="M15.4 5h-3l.6 7.4a2 2 0 0 0 4 0L15.4 5Z" transform="rotate(18 13.4 10)"/>
+      <path d="M13.9 12.1 12.6 17.6" transform="rotate(18 13.4 10)"/>
+    </g>
+    <g id="icono-musica" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 15.2V4.6L16 3v10.6"/><circle cx="5.2" cy="15.5" r="2.2"/><circle cx="14.2" cy="13.6" r="2.2"/>
+    </g>
+    <g id="icono-percha" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 3.6a1.6 1.6 0 1 1 1.6 1.6"/><path d="M10 5.2v2"/>
+      <path d="M10 7.2 2.4 13a1.4 1.4 0 0 0 .8 2.6h13.6a1.4 1.4 0 0 0 .8-2.6Z"/>
+    </g>
+    <g id="icono-calendario" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="4.4" width="14" height="12.6" rx="1.6"/><path d="M3 8.2h14M6.4 2.6v3M13.6 2.6v3"/>
+      <path d="M10 10.6v4M8 12.6h4"/>
+    </g>
+    <g id="icono-whatsapp" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M10 2a8 8 0 0 0-6.9 12L2 18l4.1-1.1A8 8 0 1 0 10 2Z"/>
+      <path d="M6.8 6.3c-.3.6-.6 1.6-.3 2.7.5 2 2.6 4 4.5 4.4 1 .2 1.9-.1 2.4-.5.2-.2.3-.5.2-.8l-.3-1c-.1-.2-.3-.4-.6-.4l-1.1.1c-.2 0-.4 0-.5-.2l-.8-1c-.1-.2-.1-.4 0-.5l.4-.7c.1-.2.1-.4 0-.6L9.6 6.5c-.1-.2-.3-.3-.5-.3H8c-.5 0-1 .3-1.2.8Z" fill="currentColor" stroke="none"/>
+    </g>
+
+    <!-- mariposa de doble trazo (boceto) -->
+    <path id="ala-sup" fill="none" d="M0,0 C2,-9 2,-19 10,-25 C18,-31 28,-28 28,-20 C28,-12 20,-3 11,1 C7,3 2,2 0,0 Z"/>
+    <path id="ala-inf" fill="none" d="M0,0 C3,5 5,13 12,16 C18,19 24,15 22,9 C20,4 13,2 8,5 C11,4 12,2 11,0"/>
+    <g id="mariposa-trazo" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-1,-3 C-3,-7 -5,-9 -8,-11"/>
+      <path d="M1,-3 C3,-7 5,-9 8,-11"/>
+      <path d="M0,-3 C-1,3 1,9 -0.5,17"/>
+      <use href="#ala-sup"/>
+      <use href="#ala-inf"/>
+      <use href="#ala-sup" transform="scale(-1,1)"/>
+      <use href="#ala-inf" transform="scale(-1,1)"/>
+    </g>
+    <g id="mariposa">
+      <use href="#mariposa-trazo" stroke="#8FA8BE" stroke-width="1.1" transform="translate(2,-1.2) rotate(-3) scale(1.03)" opacity="0.85"/>
+      <use href="#mariposa-trazo" stroke="#3B5068" stroke-width="1.3" transform="rotate(2)"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+  <section id="hero">
+    <svg class="flor-esquina tr" viewBox="0 0 220 220"><use href="#ramo-esquina" transform="translate(198,14)"/></svg>
+    <svg class="flor-esquina bl" viewBox="0 0 220 220"><use href="#ramo-esquina" transform="translate(198,14)"/></svg>
+    <svg class="mariposa m1" viewBox="-30 -30 60 60"><use href="#mariposa"/></svg>
+    <svg class="mariposa m2" viewBox="-30 -30 60 60"><use href="#mariposa"/></svg>
+    <div class="eyebrow">¡Nos casamos!</div>
+    <h1 class="nombres">Jareth Lizette<span class="amp">&amp;</span>Luis Javier</h1>
+    <p class="frase">"Y sobre todas estas cosas, vístanse de amor, que es el vínculo perfecto."</p>
+    <div class="fecha">06 · 03 · 2027</div>
+  </section>
+
+  <div class="flor-divisor"><span class="linea"></span><svg viewBox="0 0 30 30" style="color:var(--azul)"><use href="#flor-completa" stroke="var(--azul)" transform="translate(15,17) scale(0.5)"/></svg><span class="linea"></span></div>
+
+  <section class="foto-portada">
+    <svg class="mariposa" viewBox="-30 -30 60 60"><use href="#mariposa"/></svg>
+    <div class="foto-placeholder" style="padding:0;"><img src="assets/imagen_2.jpg" alt="Jareth y Luis Javier" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+  </section>
+
+  <section id="countdown">
+    <svg class="mariposa" viewBox="-30 -30 60 60"><use href="#mariposa"/></svg>
+    <div class="icono-circulo"><svg viewBox="0 0 20 20"><use href="#icono-reloj"/></svg></div>
+    <div class="eyebrow">Faltan</div>
+    <h2>Para el gran día</h2>
+    <div class="contador">
+      <div class="c-item"><div class="c-num" id="cr-dias">00</div><div class="c-label">DÍAS</div></div>
+      <div class="c-item"><div class="c-num" id="cr-horas">00</div><div class="c-label">HRS</div></div>
+      <div class="c-item"><div class="c-num" id="cr-min">00</div><div class="c-label">MIN</div></div>
+      <div class="c-item"><div class="c-num" id="cr-seg">00</div><div class="c-label">SEG</div></div>
+    </div>
+    <button class="btn-outline" id="btn-calendario">
+      <svg viewBox="0 0 20 20" style="width:14px;height:14px;vertical-align:-2px;margin-right:6px"><use href="#icono-calendario"/></svg>
+      Agregar al calendario
+    </button>
+  </section>
+
+  <section id="cancion">
+    <div class="icono-circulo"><svg viewBox="0 0 20 20"><use href="#icono-musica"/></svg></div>
+    <div class="eyebrow">Nuestra canción</div>
+    <h2 style="font-size:24px;">Dale play y acompáñanos</h2>
+    <p style="font-size:14px;">La canción que nos vio enamorarnos</p>
+
+    <audio id="audio-boda" loop preload="none" src="assets/cancion.mp3"></audio>
+
+    <div class="player">
+      <button class="btn-play" id="btn-cancion" aria-label="Reproducir canción">
+        <svg id="icono-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        <svg id="icono-pausa" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="player-info">
+        <div class="player-titulo">Clocks</div>
+        <div class="player-artista">Coldplay</div>
+        <div class="ondas" id="ondas"><span></span><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="invitacion">
+    <div class="icono-circulo"><svg viewBox="0 0 20 20"><use href="#icono-anillos"/></svg></div>
+    <div class="eyebrow">Boda</div>
+    <h2>Con la bendición de Dios</h2>
+    <p>y de nuestros padres, tenemos el honor de invitarte a celebrar nuestra unión en matrimonio.</p>
+    <div class="padres">
+      <div>
+        <h3>Padres de la novia</h3>
+        <p>Arturo Martínez Flores<br>Sofía Zúñiga González</p>
+      </div>
+      <div>
+        <h3>Padres del novio</h3>
+        <p>Javier Islas Romo<br>Laura Domínguez Maya</p>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <p style="font-size:13px;">Velación: Arturo Martínez Flores y Sofía Zúñiga González</p>
+  </section>
+
+  <section id="foto">
+    <div class="carrusel">
+      <div class="carrusel-track" id="carrusel-track">
+        <div class="carrusel-slide"><img src="assets/imagen_3.jpg" loading="lazy" alt="Jareth y Luis Javier"></div>
+        <div class="carrusel-slide"><img src="assets/imagen_4.jpg" loading="lazy" alt="Jareth y Luis Javier" style="object-position:center 5%;"></div>
+      </div>
+      <button class="carrusel-flecha prev" id="carrusel-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="carrusel-flecha next" id="carrusel-next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+    <div class="carrusel-puntos" id="carrusel-puntos">
+      <button class="activo" data-i="0" aria-label="Foto 1"></button>
+      <button data-i="1" aria-label="Foto 2"></button>
+    </div>
+    <p class="caption">06 de marzo de 2027</p>
+  </section>
+
+  <section id="ubicacion">
+    <div class="icono-circulo"><svg viewBox="0 0 20 20"><use href="#icono-pin"/></svg></div>
+    <div class="eyebrow">Dónde</div>
+    <h2>Ceremonia &amp; recepción</h2>
+    <div class="divider"></div>
+    <div class="lugar">
+      <div class="lugar-cabeza">
+        <div class="lugar-icono"><svg viewBox="0 0 20 20"><use href="#icono-iglesia"/></svg></div>
+        <h3 style="margin:0;">Ceremonia</h3>
+      </div>
+      <p>Catedral San José<br>Tula de Allende, Hidalgo</p>
+      <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Catedral+de+San+Jos%C3%A9+de+Tula&query_place_id=ChIJ70SMwhQt0oURZVoA6sxp9q8">Ver ubicación →</a>
+    </div>
+    <div class="lugar">
+      <div class="lugar-cabeza">
+        <div class="lugar-icono"><svg viewBox="0 0 20 20"><use href="#icono-copas"/></svg></div>
+        <h3 style="margin:0;">Recepción</h3>
+      </div>
+      <p>Jardín La Cayetana<br>Col. Monte Alegre</p>
+      <a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=19.986401,-99.345535">Ver ubicación →</a>
+    </div>
+    <div class="itinerario">
+      <div class="item"><div class="item-icono"><svg viewBox="0 0 20 20"><use href="#icono-anillos"/></svg></div><div><h4>Ceremonia</h4><span>13:30 hrs</span></div></div>
+      <div class="item"><div class="item-icono"><svg viewBox="0 0 20 20"><use href="#icono-copas"/></svg></div><div><h4>Recepción</h4><span>15:00 hrs</span></div></div>
+      <div class="item"><div class="item-icono"><svg viewBox="0 0 20 20"><use href="#icono-musica"/></svg></div><div><h4>Fiesta</h4><span>19:00 hrs</span></div></div>
+    </div>
+  </section>
+
+  <section id="vestimenta">
+    <div class="icono-circulo"><svg viewBox="0 0 20 20"><use href="#icono-percha"/></svg></div>
+    <div class="eyebrow">Código de vestimenta</div>
+    <h2>Formal</h2>
+    <div class="swatches">
+      <div class="swatch blanco" title="Reservado para la novia"></div>
+      <div class="swatch gris" title="Reservado para el novio"></div>
+      <div class="swatch azul" title="Reservado para el novio"></div>
+    </div>
+    <p class="nota">Evitar estos colores, ya que han sido reservados exclusivamente para los novios.</p>
+  </section>
+
+  <section id="rsvp">
+    <div class="icono-circulo claro" style="background:rgba(255,255,255,0.18);color:var(--blanco);"><svg viewBox="0 0 20 20"><use href="#icono-whatsapp"/></svg></div>
+    <div class="eyebrow">Confirma tu asistencia</div>
+    <h2>Te esperamos</h2>
+    <p>Estamos listos para celebrar el amor y queremos que estés ahí. Por favor confirma tu asistencia.</p>
+    <a class="btn-solid" id="link-rsvp" target="_blank" rel="noopener" href="#">Confirmar por WhatsApp</a>
+  </section>
+
+  <section id="cierre">
+    <svg class="mariposa" viewBox="-30 -30 60 60"><use href="#mariposa"/></svg>
+    <div class="flor-cierre-wrap">
+      <svg class="flor-cierre" viewBox="0 0 220 220"><use href="#ramo-esquina" transform="translate(198,14)"/></svg>
+      <div class="foto-placeholder" style="max-width:260px;margin:0 auto 26px;padding:0;"><img src="assets/imagen_5.jpg" loading="lazy" alt="Jareth y Luis Javier" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+    </div>
+    <p class="frase-final">De la suerte de encontrarnos a la fortuna de tenernos.</p>
+    <p class="nota">Gracias por acompañarnos</p>
+  </section>
+
+  <footer>Hecho con cariño para Jareth &amp; Luis Javier</footer>
+</div>
+
+<script>
+  const CONFIG = {
+    whatsappNumero: "527732174792",
+    whatsappMensaje: "Hola! Confirmo que asistiré a la boda de Jareth y Luis Javier 💍",
+    fechaBoda: "2027-03-06T13:30:00"
+  };
+  document.getElementById('link-rsvp').href =
+    `https://wa.me/${CONFIG.whatsappNumero}?text=${encodeURIComponent(CONFIG.whatsappMensaje)}`;
+
+  const meta = new Date(CONFIG.fechaBoda).getTime();
+  function poner(id, v){ document.getElementById(id).textContent = String(v).padStart(2,'0'); }
+  function tick(){
+    const r = Math.max(0, meta - Date.now());
+    poner('cr-dias', Math.floor(r/86400000));
+    poner('cr-horas', Math.floor((r%86400000)/3600000));
+    poner('cr-min', Math.floor((r%3600000)/60000));
+    poner('cr-seg', Math.floor((r%60000)/1000));
+  }
+  tick(); setInterval(tick, 1000);
+
+  document.getElementById('btn-calendario').addEventListener('click', () => {
+    const inicio = new Date(CONFIG.fechaBoda);
+    const fin = new Date(inicio.getTime() + 6*3600000);
+    const fmt = d => d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Boda de Jareth y Luis Javier')}&dates=${fmt(inicio)}/${fmt(fin)}&location=${encodeURIComponent('Tula de Allende, Hidalgo')}`;
+    window.open(url, '_blank', 'noopener');
+  });
+
+  /* Carrusel de fotos */
+  const track = document.getElementById('carrusel-track');
+  const puntos = Array.from(document.querySelectorAll('#carrusel-puntos button'));
+  let indiceCarrusel = 0;
+  function irACarrusel(i){
+    indiceCarrusel = (i + puntos.length) % puntos.length;
+    track.style.transform = `translateX(-${indiceCarrusel * 100}%)`;
+    puntos.forEach((b, n) => b.classList.toggle('activo', n === indiceCarrusel));
+  }
+  document.getElementById('carrusel-prev').addEventListener('click', () => irACarrusel(indiceCarrusel - 1));
+  document.getElementById('carrusel-next').addEventListener('click', () => irACarrusel(indiceCarrusel + 1));
+  puntos.forEach(b => b.addEventListener('click', () => irACarrusel(Number(b.dataset.i))));
+  // swipe táctil
+  let xInicio = null;
+  track.addEventListener('touchstart', e => xInicio = e.touches[0].clientX, {passive:true});
+  track.addEventListener('touchend', e => {
+    if (xInicio === null) return;
+    const dx = e.changedTouches[0].clientX - xInicio;
+    if (Math.abs(dx) > 40) irACarrusel(indiceCarrusel + (dx < 0 ? 1 : -1));
+    xInicio = null;
+  }, {passive:true});
+
+  /* Reproductor de "Nuestra canción" */
+  const audio = document.getElementById('audio-boda');
+  const btnCancion = document.getElementById('btn-cancion');
+  const iconoPlay = document.getElementById('icono-play');
+  const iconoPausa = document.getElementById('icono-pausa');
+  const ondas = document.getElementById('ondas');
+  btnCancion.addEventListener('click', () => {
+    if (audio.paused){
+      audio.play().catch(() => {});
+      iconoPlay.style.display = 'none';
+      iconoPausa.style.display = '';
+      ondas.classList.add('activo');
+    } else {
+      audio.pause();
+      iconoPlay.style.display = '';
+      iconoPausa.style.display = 'none';
+      ondas.classList.remove('activo');
+    }
+  });
+</script>
+</body>
+</html>
